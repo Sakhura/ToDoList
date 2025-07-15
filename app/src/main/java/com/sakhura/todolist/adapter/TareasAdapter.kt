@@ -11,7 +11,7 @@ class TareasAdapter(
     private val onCheckChange: () -> Unit
 ): RecyclerView.Adapter<TareasAdapter.TareaViewHolder>() {
 
-    inner class TareaViewHolder(val : binding: ItemTareaBinding) :
+    inner class TareaViewHolder(val binding: ItemTareaBinding) :
         RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TareaViewHolder {
@@ -33,7 +33,7 @@ class TareasAdapter(
         }
 
     }
-     override fun getItemCount(): tarea.size
+     override fun getItemCount(): Int = tareas.size
 
     fun eliminarTarea(pos: Int){
         tareas.removeAt(pos)

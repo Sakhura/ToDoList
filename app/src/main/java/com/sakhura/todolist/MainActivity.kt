@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-      //  val listaTareas = mutableMapOf<Tarea>()
+        //  val listaTareas = mutableMapOf<Tarea>()
 
         adapter = TareasAdapter(listaTareas) { actualizarContador() }
 
@@ -41,20 +41,22 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnAgregarTarea.setOnClickListener {
             val titulo = binding.etNuevaTarea.text.toString()
-            if(titulo.isNotBlank()){
-                adapte.agregarTarea(Tarea(titulo))
+            if (titulo.isNotBlank()) {
+                adapter.agregarTarea(Tarea(titulo))
                 binding.etNuevaTarea.text.clear()
-            }else{
+            } else {
                 Toast.makeText(this, "Ingrese una tarea", Toast.LENGTH_SHORT).show()
             }
-            }
+        }
+    }
 
         private fun actualizarContador(){
             val pendientes = adapter.obtenerTareas().count() { !it.completada }
-            binding.tvContador.text = "Tareas Pendientes: $pendientes"}
-        }
+            binding.tvContador.text = "Tareas Pendientes: $pendientes"
 
         }
 
+
+}
 
 
