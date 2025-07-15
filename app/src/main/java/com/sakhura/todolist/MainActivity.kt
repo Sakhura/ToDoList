@@ -48,7 +48,14 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Ingrese una tarea", Toast.LENGTH_SHORT).show()
             }
         }
+        binding.btnEliminarTareas.setOnClickListener {
+            listaTareas.removeAll { it.completada }
+            adapter.notifyDataSetChanged()
+            actualizarContador()
+        }
     }
+
+
 
         private fun actualizarContador(){
             val pendientes = adapter.obtenerTareas().count() { !it.completada }
